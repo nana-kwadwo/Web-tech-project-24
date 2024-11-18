@@ -10,5 +10,5 @@ body {
 
 .image{
    justify-content: center;
-   max-width: 200px; 
+   transform: 0.6;
 }
