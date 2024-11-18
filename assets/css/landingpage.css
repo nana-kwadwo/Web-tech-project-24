@@ -10,6 +10,7 @@ body {
 
 .image{
    justify-content: center;
+   position: relative;
    width: 5rem;
    height: 5rem;
    top:20%
