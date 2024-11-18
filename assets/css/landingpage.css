@@ -8,3 +8,7 @@ body {
     background-color: #f3f4f6;
 }
 
+.image{
+   justify-content: center;
+   max-width: 200px; 
+}
