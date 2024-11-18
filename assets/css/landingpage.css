@@ -15,7 +15,7 @@ body {
 }
 
 .logo_and_text{
-    position:absolute;
-    top: 30px;
-    left:auto;
+    position:relative;
+    top: 30%;
+    align-items: flex-start;
 }
