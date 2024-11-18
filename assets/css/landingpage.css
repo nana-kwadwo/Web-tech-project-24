@@ -8,12 +8,6 @@ body {
     background-color: #f3f4f6;
 }
 
-.image{
-   justify-content: center;
-   width: 5rem;
-   height: 5rem;
-
-}
 
 .logo_and_text{
     position:absolute;
