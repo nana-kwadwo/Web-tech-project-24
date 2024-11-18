@@ -11,4 +11,8 @@ body {
 .image{
    width: 3rem;
    height: 3rem;
+
+}
+.logo{
+    padding-top: 100px;
 }
