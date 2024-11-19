@@ -1,0 +1,139 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Full screen height */
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    display: flex;
+    flex-direction: column; /* Allow for vertical layout with the arrow */
+}
+
+/* Split Screen */
+.split-screen {
+    display: flex;
+    flex-grow: 1; /* Ensure split-screen takes up all available height */
+}
+
+/* Left Side */
+.left {
+    flex: 1; /* Fill half the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111; /* Grey background */
+    padding: 0; /* Remove unnecessary padding */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.interactive-container {
+    text-align: left;
+    width: 80%; /* Adjust the content width if necessary */
+}
+
+.interactive-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.interactive-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.interactive-container li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.interactive-container li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #0078ff;
+    font-size: 1.2rem;
+}
+
+/* Right Side */
+.right {
+    flex: 1; /* Fill half the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Black background */
+    padding: 0; /* Remove unnecessary padding */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.content {
+    text-align: center;
+    width: 80%; /* Adjust the content width if necessary */
+}
+
+.bold-link {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0078ff;
+    margin-bottom: 30px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.bold-link:hover {
+    color: #005bb5;
+}
+
+.contact-info {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #0078ff;
+}
+
+/* Arrow Section */
+.arrow-link {
+    position: absolute;
+    top: 20px; /* Adjust distance from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    text-decoration: none; /* Remove underline */
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #0078ff; /* Arrow color */
+    margin: 0 auto;
+    cursor: pointer;
+    animation: moveUpDown 1.5s infinite ease-in-out; /* Animate up-down */
+    transition: transform 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.arrow-link:hover .arrow {
+    transform: scale(1.1); /* Slight enlargement on hover */
+    border-bottom-color: #005bb5; /* Change color on hover */
+}
+
+/* Up-Down Animation */
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

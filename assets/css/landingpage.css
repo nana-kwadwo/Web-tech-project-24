@@ -1,18 +1,122 @@
-body {
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text for contrast */
+    height: 100vh;
+    overflow: hidden; /* Prevents scrolling before interacting */
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Main Title */
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+/* Subtitle */
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Primary Button (Login) */
+.btn-primary {
+    background-color: #0078ff;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #005bb5;
+}
+
+/* Secondary Button (Get Started) */
+.btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    padding: 12px 20px;
+    border: 1px solid #0078ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #0078ff;
+    color: #fff;
+}
+
+/* Learn More Section */
+.learn-more {
+    position: absolute;
+    bottom: 60px;
+    text-align: center;
+}
+
+.learn-more p {
+    font-size: 1rem;
+    margin: 0 0 5px;
+    color: #fff;
+}
+
+/* Arrow Section */
+.arrow-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f3f4f6;
+    animation: bounce 1.5s infinite;
 }
 
-.image{
-   width: 3rem;
-   height: 3rem;
-
+.arrow-v {
+    width: 15px;
+    height: 15px;
+    border-left: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    transform: rotate(45deg);
 }
-.logo{
-    padding-top: 100px;
+
+/* Arrow Motion */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Learn More Section */
+#more {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    height: 100vh;
 }
