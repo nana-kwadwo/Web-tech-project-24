@@ -99,6 +99,35 @@ function addCostItem() {
     attachEventListeners(); // Reattach event listeners to include the new item
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const imagePreview = document.querySelector('.image-preview');
+    const imageUploadInput = document.getElementById('imageUpload');
+    const imageUploadButton = document.getElementById('imageUploadButton');
+
+    imagePreview.addEventListener('click', () => {
+        imageUploadInput.click();
+    });
+
+    imageUploadButton.addEventListener('click', () => {
+        imageUploadInput.click();
+    });
+
+    imageUploadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+
 // Initialize event listeners on load
 attachEventListeners();
 updateResults();

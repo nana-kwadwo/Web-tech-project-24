@@ -8,6 +8,16 @@
 </head>
 <body>
     <div class="container">
+        <div class="upload-section">
+            <label for="imageUpload" class="upload-label">
+                <span class="upload-icon">📤</span>
+                <span>Upload Image</span>
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" hidden>
+        </div>
+        <div class="back-button-container">
+            <button class="back-button" onclick="goBack()"><a href="new_collection.html">← Back</a></button>
+        </div>
         <div class="card">
            <h2><input type="text" class="product-name" value="Product Name" placeholder="Enter product name"></h2>
             <div class="section">

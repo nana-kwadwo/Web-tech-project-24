@@ -85,3 +85,17 @@ body {
         transform: translateX(5px);
     }
 }
+
+.back-btn, .profile-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover, .profile-btn:hover {
+    background-color: #333;
+}
