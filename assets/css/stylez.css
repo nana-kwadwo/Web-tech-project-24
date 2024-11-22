@@ -133,3 +133,55 @@ button:hover {
     color: #dc2626;
     background-color: #222; /* Subtle hover effect */
 }
+
+/* Edit and Save button styles */
+/* Previous styles remain the same until the button styles */
+
+/* Updated bottom action buttons styles */
+.bottom-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background-color: #111;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 12px 24px;
+    background-color: #0078ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.action-btn:hover {
+    background-color: #005bb5;
+}
+
+.action-btn:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+/* When edit mode is active */
+.action-btn.edit-active {
+    background-color: #22c55e;
+}
+
+.action-btn.edit-active:hover {
+    background-color: #16a34a;
+}
+
+/* Add padding to container to prevent content from being hidden behind fixed buttons */
+.container {
+    padding-bottom: 80px;
+}
