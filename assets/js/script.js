@@ -7,6 +7,7 @@ const unitCostOutput = document.getElementById('unitCost');
 const sellingPriceOutput = document.getElementById('sellingPrice');
 const profitPerUnitOutput = document.getElementById('profitPerUnit');
 const netProfitOutput = document.getElementById('netProfit');
+const projectedRevenueOutput = document.getElementById('projectedRevenue');
 const breakevenUnitsOutput = document.getElementById('breakevenUnits');
 
 // Function to calculate total cost
@@ -39,10 +40,14 @@ function calculateNetProfit(profitPerUnit, units) {
     return profitPerUnit * units;
 }
 
+// Function to calculate projected revenue
+function calculateProjectedRevenue(sellingPrice, units) {
+    return sellingPrice * units;
+}
+
 // Function to calculate breakeven units
-function calculateBreakevenUnits(unitCost, sellingPrice) {
-    const profitPerUnit = calculateProfitPerUnit(sellingPrice, unitCost);
-    return profitPerUnit > 0 ? Math.ceil(unitCost / profitPerUnit) : 0;
+function calculateBreakevenUnits(totalCost, sellingPrice) {
+    return sellingPrice > 0 ? Math.ceil(totalCost / sellingPrice) : 0;
 }
 
 // Function to update results dynamically
@@ -53,21 +58,25 @@ function updateResults() {
     const sellingPrice = calculateSellingPrice(unitCost);
     const profitPerUnit = calculateProfitPerUnit(sellingPrice, unitCost);
     const netProfit = calculateNetProfit(profitPerUnit, units);
-    const breakevenUnits = calculateBreakevenUnits(unitCost, sellingPrice);
+    const projectedRevenue = calculateProjectedRevenue(sellingPrice, units);
+    const breakevenUnits = calculateBreakevenUnits(totalCost, sellingPrice);
 
     totalCostOutput.textContent = `$${totalCost.toFixed(2)}`;
     unitCostOutput.textContent = `$${unitCost.toFixed(2)}`;
     sellingPriceOutput.textContent = `$${sellingPrice.toFixed(2)}`;
     profitPerUnitOutput.textContent = `$${profitPerUnit.toFixed(2)}`;
     netProfitOutput.textContent = `$${netProfit.toFixed(2)}`;
+    projectedRevenueOutput.textContent = `$${projectedRevenue.toFixed(2)}`;
     breakevenUnitsOutput.textContent = breakevenUnits;
 }
 
-// Attach input event listeners for dynamic updates
+// Attach event listeners to all inputs
 function attachEventListeners() {
-    document.querySelectorAll('.cost-value, #units, #markup').forEach(input => {
+    document.querySelectorAll('.cost-value').forEach(input => {
         input.addEventListener('input', updateResults);
     });
+    unitsInput.addEventListener('input', updateResults);
+    markupInput.addEventListener('input', updateResults);
 }
 
 // Function to delete a cost item
@@ -86,9 +95,10 @@ function addCostItem() {
         <input type="number" value="0" class="cost-value" min="0" />
         <button class="delete-btn" onclick="deleteCostItem(this)">✖</button>
     `;
-    newCostItem.querySelector('.cost-value').addEventListener('input', updateResults);
     costsContainer.appendChild(newCostItem);
+    attachEventListeners(); // Reattach event listeners to include the new item
 }
 
 // Initialize event listeners on load
 attachEventListeners();
+updateResults();
