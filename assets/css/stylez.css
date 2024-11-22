@@ -14,8 +14,9 @@ body {
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
     padding: 20px;
+    padding-bottom: 80px;
 }
 
 .card {
@@ -26,8 +27,32 @@ body {
     color: #fff;
 }
 
-h2, h3 {
+.product-name {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 100%;
     margin-bottom: 1rem;
+    padding: 5px;
+    transition: all 0.3s ease;
+}
+
+.product-name:hover {
+    background-color: #222;
+    border-radius: 4px;
+}
+
+.product-name:focus {
+    background-color: #222;
+    border-radius: 4px;
+    outline: 1px solid #0078ff;
+    color: #fff;
+}
+
+h2, h3 {
+    margin-bottom: 0.4rem;
     color: #ccc; /* Softer white for headings */
 }
 
@@ -101,6 +126,7 @@ button:hover {
 .cost-section label {
     flex: 1;
     font-weight: bold;
+    font-size: medium;
     color: #fff;
 }
 
@@ -133,9 +159,6 @@ button:hover {
     color: #dc2626;
     background-color: #222; /* Subtle hover effect */
 }
-
-/* Edit and Save button styles */
-/* Previous styles remain the same until the button styles */
 
 /* Updated bottom action buttons styles */
 .bottom-actions {
@@ -179,9 +202,4 @@ button:hover {
 
 .action-btn.edit-active:hover {
     background-color: #16a34a;
-}
-
-/* Add padding to container to prevent content from being hidden behind fixed buttons */
-.container {
-    padding-bottom: 80px;
 }
