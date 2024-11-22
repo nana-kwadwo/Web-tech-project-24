@@ -20,7 +20,7 @@
             </div>
             <button type="submit">Log-In</button>
         </form>
-        <p>Don't Have an Account? <a href="signup.html">Sign up here</a></p>
+        <p>Don't Have an Account? <a href="signup.php">Sign up here</a></p>
         <div id="message"></div>
     </div>
     <script src="password_v2.js"></script>

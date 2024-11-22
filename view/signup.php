@@ -9,14 +9,24 @@
 <body>
     <div class="container">
         <h2>Signup</h2>
-        <form id="signupForm" onsubmit="return validateForm(event)">
+        <!-- Display server-side errors -->
+        <?php
+        session_start();
+        if (!empty($_SESSION['signup_errors'])) {
+            foreach ($_SESSION['signup_errors'] as $error) {
+                echo "<p style='color: red;'>$error</p>";
+            }
+            unset($_SESSION['signup_errors']);
+        }
+        ?>
+        <form id="signupForm" action="../actions/signup.php" method="POST">
             <div class="form-group">
                 <label for="firstname">First Name</label>
-                <input type="text" id="firstname" name="firstname" required>
+                <input type="text" id="firstname" name="fName" required>
             </div>
             <div class="form-group">
                 <label for="lastname">Last Name</label>
-                <input type="text" id="lastname" name="lastname" required>
+                <input type="text" id="lastname" name="lName" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -29,17 +39,13 @@
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input type ="password" id="ConfirmPassword" name="confirmPassword" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
                 <span id="confirmPasswordError" class="error"></span>
             </div>
             <button type="submit">Signup</button>
         </form>
-        <p>Already have an account? <a href="login.html">Login here</a></p>
-        <div id="message"></div>
+        <p>Already have an account? <a href="login.php">Login here</a></p>
     </div>
-    <script src="password_v2.js"></script>
-
-
+    <script src="../assets/js/password_validation.js"></script>
 </body>
-
 </html>
