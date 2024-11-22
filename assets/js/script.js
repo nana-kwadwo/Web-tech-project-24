@@ -1,14 +1,16 @@
 // Select relevant elements
 const costsContainer = document.getElementById('costs');
-const fixedCostsInput = document.getElementById('fixed-cost');
+const unitsInput = document.getElementById('units');
 const markupInput = document.getElementById('markup');
-const totalCostPerUnitOutput = document.getElementById('totalCostPerUnit');
+const totalCostOutput = document.getElementById('totalCost');
+const unitCostOutput = document.getElementById('unitCost');
 const sellingPriceOutput = document.getElementById('sellingPrice');
 const profitPerUnitOutput = document.getElementById('profitPerUnit');
+const netProfitOutput = document.getElementById('netProfit');
 const breakevenUnitsOutput = document.getElementById('breakevenUnits');
 
-// Function to calculate total cost per unit
-function calculateTotalCostPerUnit() {
+// Function to calculate total cost
+function calculateTotalCost() {
     let total = 0;
     document.querySelectorAll('.cost-value').forEach(input => {
         total += parseFloat(input.value) || 0;
@@ -16,40 +18,57 @@ function calculateTotalCostPerUnit() {
     return total;
 }
 
-// Function to calculate selling price based on markup
-function calculateSellingPrice(totalCostPerUnit) {
+// Function to calculate unit cost
+function calculateUnitCost(totalCost, units) {
+    return units > 0 ? totalCost / units : 0;
+}
+
+// Function to calculate selling price
+function calculateSellingPrice(unitCost) {
     const markup = parseFloat(markupInput.value) || 0;
-    return totalCostPerUnit * (1 + markup / 100);
+    return unitCost * (1 + markup / 100);
 }
 
 // Function to calculate profit per unit
-function calculateProfitPerUnit(sellingPrice, totalCostPerUnit) {
-    return sellingPrice - totalCostPerUnit;
+function calculateProfitPerUnit(sellingPrice, unitCost) {
+    return sellingPrice - unitCost;
+}
+
+// Function to calculate net profit
+function calculateNetProfit(profitPerUnit, units) {
+    return profitPerUnit * units;
 }
 
 // Function to calculate breakeven units
-function calculateBreakevenUnits(profitPerUnit) {
-    const fixedCosts = parseFloat(fixedCostsInput.value) || 0;
-    return profitPerUnit > 0 ? Math.ceil(fixedCosts / profitPerUnit) : 0;
+function calculateBreakevenUnits(unitCost, sellingPrice) {
+    const profitPerUnit = calculateProfitPerUnit(sellingPrice, unitCost);
+    return profitPerUnit > 0 ? Math.ceil(unitCost / profitPerUnit) : 0;
 }
 
-// Function to update results
+// Function to update results dynamically
 function updateResults() {
-    const totalCostPerUnit = calculateTotalCostPerUnit();
-    const sellingPrice = calculateSellingPrice(totalCostPerUnit);
-    const profitPerUnit = calculateProfitPerUnit(sellingPrice, totalCostPerUnit);
-    const breakevenUnits = calculateBreakevenUnits(profitPerUnit);
+    const totalCost = calculateTotalCost();
+    const units = parseFloat(unitsInput.value) || 0;
+    const unitCost = calculateUnitCost(totalCost, units);
+    const sellingPrice = calculateSellingPrice(unitCost);
+    const profitPerUnit = calculateProfitPerUnit(sellingPrice, unitCost);
+    const netProfit = calculateNetProfit(profitPerUnit, units);
+    const breakevenUnits = calculateBreakevenUnits(unitCost, sellingPrice);
 
-    totalCostPerUnitOutput.textContent = `$${totalCostPerUnit.toFixed(2)}`;
+    totalCostOutput.textContent = `$${totalCost.toFixed(2)}`;
+    unitCostOutput.textContent = `$${unitCost.toFixed(2)}`;
     sellingPriceOutput.textContent = `$${sellingPrice.toFixed(2)}`;
     profitPerUnitOutput.textContent = `$${profitPerUnit.toFixed(2)}`;
+    netProfitOutput.textContent = `$${netProfit.toFixed(2)}`;
     breakevenUnitsOutput.textContent = breakevenUnits;
 }
 
-// Event listeners for input fields
-document.querySelectorAll('.cost-value, #fixed-cost, #markup').forEach(input => {
-    input.addEventListener('input', updateResults);
-});
+// Attach input event listeners for dynamic updates
+function attachEventListeners() {
+    document.querySelectorAll('.cost-value, #units, #markup').forEach(input => {
+        input.addEventListener('input', updateResults);
+    });
+}
 
 // Function to delete a cost item
 function deleteCostItem(button) {
@@ -70,3 +89,6 @@ function addCostItem() {
     newCostItem.querySelector('.cost-value').addEventListener('input', updateResults);
     costsContainer.appendChild(newCostItem);
 }
+
+// Initialize event listeners on load
+attachEventListeners();
