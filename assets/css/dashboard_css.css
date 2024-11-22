@@ -80,7 +80,7 @@ body {
     color: #fff;
     padding: 10px 20px;
     display: block;
-    transition: background 0.3s;
+    transition: backg0.3s;
 }
 
 .sidebar-nav a:hover {
@@ -137,7 +137,7 @@ body {
 
 @media (max-width: 768px) {
     .dashboard-row {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .chart-container {
