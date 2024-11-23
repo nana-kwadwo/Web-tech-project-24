@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
             <li><a href="new_collection.html">New<br> Collection</a></li>
             <li><a href="collection_history.html">Collection History</a></li>
             <li><a href="#">Help</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="../actions/logout.php">Logout</a></li>
         </ul>
     </div>
 
