@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Arrow Section -->
-    <a href="landing_page.html" class="arrow-link">
+    <a href="landing_page.php" class="arrow-link">
         <div class="arrow"></div>
     </a>
     
@@ -28,7 +28,7 @@
         <!-- Right Section -->
         <div class="right">
             <div class="content">
-                <h2 class="bold-link"><a href="meet_the_team.html">Meet the Team</h2>
+                <h2 class="bold-link"><a href="meet_the_team.php">Meet the Team</h2>
                 <div class="contact-info">
                     <p>Email: sheeshgroup@gmail.com</p>
                     <p>Phone: +233 542 509 315</p>

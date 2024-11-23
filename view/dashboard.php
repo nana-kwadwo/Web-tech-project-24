@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="sidebar" id="sidebar">
         <ul class="sidebar-nav">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="new_collection.html">New<br> Collection</a></li>
+            <li><a href="new_collection.php">New<br> Collection</a></li>
             <li><a href="collection_history.html">Collection History</a></li>
             <li><a href="#">Help</a></li>
             <li><a href="../actions/logout.php">Logout</a></li>
@@ -43,11 +43,11 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Main Content -->
     <div class="main">
         <div class="dashboard-row">
-            <button class="btn-create"><a href="new_collection.html">Create New Collection</a></button>
+            <button class="btn-create"><a href="new_collection.php">Create New Collection</a></button>
 
             
             <div class="info-box">  
-                <a href="collection_history.html">
+                <a href="collection_history.php">
                 <div class="info-name">Collection History</div>
                 </a>
             </div>

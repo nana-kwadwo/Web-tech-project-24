@@ -11,13 +11,13 @@
         <h1>Fashion Ledger</h1>
         <p>Track your brand's success with ease.</p>
         <div class="buttons">
-            <a href="login.html" class="btn-primary">Login</a>
-            <a href="signup.html" class="btn-secondary">Get started</a>
+            <a href="login.php" class="btn-primary">Login</a>
+            <a href="signup.php" class="btn-secondary">Get started</a>
         </div>
         <!-- Learn More Section -->
         <div class="learn-more">
             <p>Learn More</p>
-            <a href="learn_more.html">
+            <a href="learn_more.php">
                 <div class="arrow-container">
                     <div class="arrow-v"></div>
                 </div>

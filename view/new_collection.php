@@ -9,7 +9,7 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <a href="dashboard.html">
+        <a href="dashboard.php">
         <button class="back-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -37,7 +37,7 @@
                 <img src="/api/placeholder/400/500" alt="Product 1">
             </div>
             <div class="product-actions">
-                <a href="main.html">
+                <a href="main.php">
                 <button class="icon-btn edit-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Add Product Button -->
-    <a href="main.html">
+    <a href="main.php">
     <button class="add-product-btn">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"/>
