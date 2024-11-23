@@ -9,10 +9,20 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form id="loginForm" onsubmit="return validateForm(event)">
+        <!-- Display server-side errors -->
+        <?php
+        session_start();
+        if (!empty($_SESSION['login_errors'])) {
+            foreach ($_SESSION['login_errors'] as $error) {
+                echo "<p style='color: red;'>$error</p>";
+            }
+            unset($_SESSION['login_errors']);
+        }
+        ?>
+        <form id="loginForm" action="../actions/login.php" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -20,9 +30,8 @@
             </div>
             <button type="submit">Log-In</button>
         </form>
-        <p>Don't Have an Account? <a href="signup.html">Sign up here</a></p>
+        <p>Don't Have an Account? <a href="signup.php">Sign up here</a></p>
         <div id="message"></div>
     </div>
-    <script src="password_v2.js"></script>
 </body>
 </html>
