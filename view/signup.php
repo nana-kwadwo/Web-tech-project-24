@@ -46,12 +46,6 @@
         </form>
         <p>Already have an account? <a href="login.php">Login here</a></p>
     </div>
-<<<<<<< HEAD:view/signup.html
-    <script src="password_v2.js"></script>
-
-<script></script>
-=======
     <script src="../assets/js/password_validation.js"></script>
->>>>>>> 58b71213b9cfd82c612ab8a5ac41685dd57e5415:view/signup.php
 </body>
 </html>
