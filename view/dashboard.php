@@ -54,7 +54,7 @@ if (!isset($_SESSION['user_id'])) {
 
           <div class="info-box">
           <a href="help.php">
-                <div class="info-name">FAQs</div>
+            <div class="info-name">FAQs</div>
           </a> 
             </div>
         </div>
