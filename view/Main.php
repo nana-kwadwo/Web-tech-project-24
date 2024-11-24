@@ -95,7 +95,6 @@
     </div>
 
     <div class="button-group">
-        <button id="editButton" class="action-btn">Edit</button>
         <button id="saveButton" class="action-btn" disabled>Save</button>
     </div>
     
