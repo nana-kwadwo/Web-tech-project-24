@@ -1,3 +1,10 @@
+<?php
+session_start();
+include '../functions/collection_function.php';
+include '../db/databse.php'; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,20 +25,18 @@
         <h1 class="page-title">Collection History</h1>
         
         <div class="collections-grid">
+        <?php
+
+            $collections = getCollections($conn);
+
+            foreach ($collections as $collection) {
+        ?>
+
             <a href="#" class="collection-card">
-                <span class="collection-name">Apoluo</span>
+                <span class="collection-name"><?php echo $collection['collection_name']; }?></span>
                 <span class="arrow-icon">→</span>
             </a>
 
-            <a href="#" class="collection-card">
-                <span class="collection-name">Apoluo II</span>
-                <span class="arrow-icon">→</span>
-            </a>
-
-            <a href="#" class="collection-card">
-                <span class="collection-name">Asher</span>
-                <span class="arrow-icon">→</span>
-            </a>
         </div>
     </div>
 </body>

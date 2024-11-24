@@ -16,7 +16,7 @@
             <input type="file" id="imageUpload" accept="image/*" hidden>
         </div>
         <div class="back-button-container">
-            <button class="back-button" onclick="goBack()"><a href="new_collection.html">← Back</a></button>
+            <button class="back-button" onclick="goBack()"><a href="new_collection.php">← Back</a></button>
         </div>
         <div class="card">
            <h2><input type="text" class="product-name" value="Product Name" placeholder="Enter product name"></h2>
