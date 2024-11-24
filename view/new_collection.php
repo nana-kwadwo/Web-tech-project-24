@@ -32,12 +32,9 @@
         </button>
     </div>
 
-<<<<<<< HEAD
-=======
     <div class="products-grid">
 
     </div>
->>>>>>> 1e2860c3580d5f3ddd55c4d191318e57fab60ce7
 
     <!-- Add Product Button -->
     <a href="main.php">
