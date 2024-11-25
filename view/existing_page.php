@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Collection</title>
-    <link rel="stylesheet" href="../assets/css/new_collection.css">
+    <link rel="stylesheet" href="../assets/css/existing_page.css">
 </head>
 <body>
     <!-- Header Section -->
