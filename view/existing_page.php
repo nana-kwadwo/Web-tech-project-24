@@ -1,3 +1,21 @@
+<?php
+include '../functions/collection_function.php'; 
+
+if(isset($_GET['id'])){
+    $result = getCollection($_GET['id']);
+    
+    //var_dump($result);
+    //exit;
+}
+
+if(isset($_GET['id'])){
+    $summary_result= getCollectionSummary($_GET['id']);
+    //var_dump( $summary_result );
+    //exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +27,7 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <a href="dashboard.php">
+        <a href="collection_history.php">
         <button class="back-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -18,7 +36,7 @@
         </a>
         
         <div class="collection-name">
-            <input type="text" placeholder="Collection Name" class="collection-title-input" value="New Collection">
+           <h3> <?php echo $result['collection_name']?> </h3>
         </div>
         
         <button class="profile-btn">
@@ -69,11 +87,11 @@
 
     <!-- Collection Summary Section -->
     <div class="collection-summary">
-        <h2>Collection Summary</h2>
-        <p><strong>Projected Revenue:</strong> ₵0.00</p>
-        <p><strong>Projected Net Profit:</strong>₵0.00</p>
-        <p><strong>Total Costs:</strong> ₵0.00</p>
-        <p><strong>Break-Even Costs:</strong> ₵0.00</p>
+        <h2><?php echo $result['collection_name']?> Summary </h2>
+        <p><strong>Projected Revenue:</strong>₵<?php echo $summary_result['projected_revenue']?> </p>
+        <p><strong>Projected Net Profit:</strong>₵<?php echo $summary_result['projected_profit']?></p>
+        <p><strong>Total Costs:</strong> ₵<?php echo $summary_result['total_cost']?></p>
+        <p><strong>Break-Even Costs:</strong> ₵<?php echo $summary_result['total_break_even']?></p>
     </div>
 
     <script>

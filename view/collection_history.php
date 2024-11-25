@@ -36,7 +36,7 @@ include '../db/databse.php';
                 
                 ?>
 
-                <a href=<?php echo "collection_view.php?id=". $collection['collection_id'] ?> class="collection-card">
+                <a href=<?php echo "existing_page.php?id=". $collection['collection_id'] ?> class="collection-card">
                     <span class="collection-name"><?php echo $collection['collection_name'];
             } ?></span>
                 <span class="arrow-icon">→</span>
