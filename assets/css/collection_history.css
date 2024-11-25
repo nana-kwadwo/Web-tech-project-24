@@ -1,89 +1,34 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
     background-color: #000;
     color: #fff;
-    padding: 20px;
-}
-
-.container {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.page-title {
-    color: #ccc;
-    margin-bottom: 2rem;
-    font-size: 1.8em;
-}
-
-.collections-grid {
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-.collection-card {
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
     background-color: #111;
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 1px solid transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-decoration: none;
-}
-
-.collection-card:hover {
-    border-color: #0078ff;
-    transform: translateX(10px);
-    background-color: #1a1a1a;
-}
-
-.collection-name {
-    font-size: 1.2em;
-    color: #fff;
-    margin: 0;
-}
-
-.arrow-icon {
-    color: #0078ff;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.collection-card:hover .arrow-icon {
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .collection-card {
-        padding: 1rem;
-    }
-    
-    .collection-name {
-        font-size: 1.1em;
-    }
-    
-    .collection-card:hover {
-        transform: translateX(5px);
-    }
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .back-btn, .profile-btn {
@@ -94,8 +39,121 @@ body {
     padding: 8px;
     border-radius: 50%;
     transition: background-color 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .back-btn:hover, .profile-btn:hover {
     background-color: #333;
+}
+
+.header-title {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+}
+
+.header-title h1 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Create Collection Container */
+.create-collection-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    padding: 0 20px;
+}
+
+.collection-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #111;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.collection-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.collection-input:focus {
+    outline: none;
+    border-color: #0078ff;
+    background-color: #2a2a2a;
+    box-shadow: 0 0 0 2px rgba(0, 120, 255, 0.1);
+}
+
+.collection-input::placeholder {
+    color: #666;
+}
+
+.create-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #0078ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.create-btn:hover {
+    background-color: #0066dd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 102, 221, 0.2);
+}
+
+.create-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.error-message {
+    background-color: rgba(255, 68, 68, 0.1);
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    color: #ff4444;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .create-collection-container {
+        padding: 0 15px;
+    }
+    
+    .collection-form {
+        padding: 20px;
+    }
+    
+    .header-title h1 {
+        font-size: 1.1rem;
+    }
 }
