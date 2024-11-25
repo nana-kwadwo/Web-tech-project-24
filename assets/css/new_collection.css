@@ -29,7 +29,7 @@ html, body {
 .create-collection-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     min-height: calc(100vh - 60px);
     margin-top: 60px;
     padding: 20px;
