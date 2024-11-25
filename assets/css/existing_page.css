@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 71, 171, 0.2);
+}
+
+.back-btn, .profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.back-btn:hover, .profile-btn:hover {
+    color: #0047AB;
+}
+
+.collection-name {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.collection-title-input {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.collection-title-input:focus {
+    outline: none;
+    border-bottom: 2px solid #0047AB;
+    background-color: rgba(0, 71, 171, 0.1);
+}
+
+/* Products Grid */
+.products-grid {
+    margin-top: 80px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.product-card {
+    background-color: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 71, 171, 0.2);
+    border-color: #0047AB;
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px;
+    background-color: #111;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: rgba(0, 71, 171, 0.2);
+    color: #0047AB;
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ff4444;
+}
+
+/* Add Product Button */
+.add-product-btn {
+    position: fixed;
+    bottom: 220px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    background-color: #0047AB;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 71, 171, 0.3);
+}
+
+.add-product-btn:hover {
+    transform: scale(1.1);
+    background-color: #0056d0;
+    box-shadow: 0 6px 16px rgba(0, 71, 171, 0.4);
+}
+
+/* Collection Summary */
+.collection-summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #111;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 71, 171, 0.2);
+}
+
+.collection-summary h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0047AB;
+    display: inline-block;
+}
+
+.collection-summary p {
+    margin: 8px 0;
+    color: #ccc;
+}
+
+.collection-summary strong {
+    color: #fff;
+    margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .collection-summary {
+        padding: 15px;
+    }
+
+    .add-product-btn {
+        bottom: 200px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0047AB;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056d0;
+}
