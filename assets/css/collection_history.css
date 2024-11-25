@@ -1,19 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background-color: #000; /* Ensure the entire background is black */
-    color: #0c0a0a;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-}
+ccccc
 
 /* Header Styles */
 .header {
