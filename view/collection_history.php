@@ -25,7 +25,7 @@ include '../db/databse.php';
         </button>
     </a>
     <div class="container">
-        <h1 class="page-title">Collection History</h1>
+        <h1 class="page-title">Collections</h1>
 
         <div class="collections-grid">
             <?php
