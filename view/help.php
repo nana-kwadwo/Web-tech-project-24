@@ -2,9 +2,15 @@
 <html>
 <head>
   <title>Fashion Brand Cost and Revenue Tracking App FAQs</title>
+  <a href="dashboard.php">
+        <button class="back-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        </a>
 </head>
 <style>
-    /* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -46,6 +52,7 @@ p {
 body {
     padding: 2rem;
 }
+
 </style>
 <body>
   <h1>FAQs</h1>
