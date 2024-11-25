@@ -9,7 +9,7 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <a href="dashboard.php">
+        <a href="dashboard.php" class="back-btn-container">
             <button class="back-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -21,12 +21,17 @@
             <h1>Create New Collection</h1>
         </div>
         
-        <button class="profile-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-            </svg>
-        </button>
+        <div class="profile-btn-container">
+            <button class="profile-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </button>
+            <span class="username-tooltip">
+                <?php echo isset($_SESSION['fname']) ? htmlspecialchars($_SESSION['fname']) : 'User'; ?>
+            </span>
+        </div>
     </div>
 
     <!-- Collection Creation Form -->
