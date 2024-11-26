@@ -1,18 +1,17 @@
 <?php
 include '../functions/collection_function.php';
+include '../db/databse.php';
 
+$collections = getCollections();
 if (isset($_GET['id'])) {
     $result = getCollection($_GET['id']);
-
-    //var_dump($result);
-    //exit;
 }
 
 if (isset($_GET['id'])) {
     $summary_result = getCollectionSummary($_GET['id']);
-    //var_dump( $summary_result );
-    //exit;
 }
+
+
 
 ?>
 
@@ -39,7 +38,9 @@ if (isset($_GET['id'])) {
         </a>
 
         <div class="collection-name">
-            <h3> <?php echo $result['collection_name'] ?> </h3>
+            <h3> <?php foreach ($collections as $collection) {
+                echo $collection['collection_name'];
+            } ?> </h3>
         </div>
 
         <button class="profile-btn">
@@ -54,36 +55,14 @@ if (isset($_GET['id'])) {
     <!-- Products Grid Section -->
     <div class="products-grid">
         <!-- Product Card 1 -->
-        <div class="product-card">
-            <div class="product-image">
-                <img src="/api/placeholder/400/500" alt="Product 1">
-            </div>
-            <div class="product-actions">
-                <a href="main.php">
-                    <button class="icon-btn edit-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                        </svg>
-                    </button>
-                </a>
-                <button class="icon-btn delete-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 6h18" />
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+       <?php displayProducts($conn); ?>
 
         <!-- More Product Cards can go here -->
-
+ 
     </div>
 
     <!-- Add Product Button -->
-    <a href="Main.php?id=<?php echo $result['collection_id']; ?>">
+    <a href="Main.php?id=<?php  echo $result['collection_id']; ?>">
         <button class="add-product-btn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -96,13 +75,43 @@ if (isset($_GET['id'])) {
     <!-- Collection Summary Section -->
     <div class="collection-summary">
         <h2><?php echo $result['collection_name'] ?> Summary </h2>
-        <p><strong>Projected Revenue:</strong>₵<?php echo $summary_result['projected_revenue'] ?> </p>
-        <p><strong>Projected Net Profit:</strong>₵<?php echo $summary_result['projected_profit'] ?></p>
-        <p><strong>Total Costs:</strong> ₵<?php echo $summary_result['total_cost'] ?></p>
-        <p><strong>Break-Even Costs:</strong> ₵<?php echo $summary_result['total_break_even'] ?></p>
+        <p><strong>Projected Revenue:</strong>₵$0</p>
+        <p><strong>Projected Net Profit:</strong>₵$0</p>
+        <p><strong>Total Costs:</strong> ₵$0</p>
+        <p><strong>Break-Even Costs:</strong> ₵$0</p>
     </div>
 
     <script>
+
+
+function deleteProduct(productId) {
+    // Confirm before deleting
+    if (confirm("Are you sure you want to delete this product?")) {
+        // Send an AJAX request to delete the product
+        fetch('../actions/delete_product_action.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'product_id=' + productId // Send the product ID to the server
+        })
+        .then(response => response.json()) // Expecting a JSON response
+        .then(data => {
+            if (data.success) {
+                // If deletion is successful, alert the user and reload the page
+                alert('Product deleted successfully.');
+                location.reload(); // Reload the page to update the product list
+            } else {
+                alert('Failed to delete the product. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the product.');
+        });
+    }
+}
+
         const collectionInput = document.querySelector('.collection-title-input');
         collectionInput.addEventListener('focus', () => {
             collectionInput.select();
