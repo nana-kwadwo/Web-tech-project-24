@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_id'])) {
             
             <div class="info-box">  
                 <a href="collection_history.php">
-                <div class="info-name">Collection History</div>
+                <div class="info-name">Collections </div>
                 </a>
             </div>
 
