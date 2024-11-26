@@ -73,10 +73,10 @@ if (isset($_GET['id'])) {
     <!-- Collection Summary Section -->
     <div class="collection-summary">
         <h2><?php echo $result['collection_name'] ?> Summary </h2>
-        <p><strong>Projected Revenue:</strong>₵$0</p>
-        <p><strong>Projected Net Profit:</strong>₵$0</p>
-        <p><strong>Total Costs:</strong> ₵$0</p>
-        <p><strong>Break-Even Costs:</strong> ₵$0</p>
+        <p><strong>Projected Revenue:</strong>₵<?php echo $result['projected_revenue'] ?></p>
+        <p><strong>Projected Net Profit:</strong>₵<?php echo $result['projected_profit'] ?></p>
+        <p><strong>Total Costs:</strong> ₵<?php echo $result['total_cost'] ?></p>
+        <p><strong>Break-Even Costs:</strong> ₵<?php echo $result['total_break_even'] ?></p>
     </div>
 
     <script>
