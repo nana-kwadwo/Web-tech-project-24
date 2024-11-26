@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         // Product created successfully
-        header('Location: ../../view/existing_page.php?id=' . $result['collection_id']);
+        header('Location: ../../view/existing_page.php?id=' . $collection_id);
         exit;
     } else {
         $_SESSION['Create_Error'] = ["Failed to create product. Please try again."];
