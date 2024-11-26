@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id'])) {
         <ul class="sidebar-nav">
             <li><a href="#">Dashboard</a></li>
             <li><a href="new_collection.php">New<br> Collection</a></li>
-            <li><a href="collection_history.php">Collection History</a></li>
+            <li><a href="collection_history.php">Collections</a></li>
             <li><a href="help.php">Help</a></li>
             <li><a href="../actions/logout.php">Logout</a></li>
         </ul>
