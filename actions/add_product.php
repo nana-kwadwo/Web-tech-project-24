@@ -55,10 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ssddddid", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost, $numberOfUnits, $markup_percentage);
 
     if ($stmt->execute()) {
-        var_dump("Product is added successfully");
-        exit;
         // Product created successfully
-        header('Location: ../view/Main.php');
+        header('Location: ../../view/existing_page.php?id=' . $result['collection_id']);
         exit;
     } else {
         $_SESSION['Create_Error'] = ["Failed to create product. Please try again."];
