@@ -238,3 +238,62 @@ button:hover {
     top: 20px;
     left: 20px;
 }
+
+
+/* Flexbox alignment for cost items */
+.cost-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cost-item label {
+    flex: 1;
+    text-align: right;
+    padding-right: 10px;
+    color: #fff;
+}
+
+.cost-item input {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #0078ff;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Alignment for cost-section */
+.cost-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.cost-section label {
+    flex: 1 1 48%;
+    color: #fff;
+    font-weight: bold;
+}
+
+.cost-section input {
+    flex: 1 1 48%;
+    padding: 8px;
+    border: 1px solid #0078ff;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* General input styling */
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #0078ff;
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+}
