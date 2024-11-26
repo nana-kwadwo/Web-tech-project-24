@@ -47,12 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $markupPercentage, 
         $productId
     );
-    
 
     // Execute the query
     if ($stmt->execute()) {
         // Redirect to the product details page or display a success message
-        header("Location: ../view/existing_page.php?id=$productId");
+        header("Location: ../view/collection_history.php");
         exit();
     } else {
         die("Error updating product: " . $stmt->error);

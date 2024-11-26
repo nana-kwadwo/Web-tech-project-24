@@ -68,7 +68,7 @@ function displayProducts($conn) {
                 
                 // Product image
                 echo "<div class='product-image'>";
-                echo "<img src='" . htmlspecialchars($product['product_name']) . "' alt='" . htmlspecialchars($product['product_name']) . "'>";
+                echo  htmlspecialchars($product['product_name']) ;
                 echo "</div>";
                 
                 // Product actions

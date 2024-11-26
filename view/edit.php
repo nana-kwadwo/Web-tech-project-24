@@ -30,9 +30,9 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="container">
-        <div class="back-button-container">
-            <button class="back-button" onclick="goBack()"><a href="existing_page.php?id=<?php echo $result['collection_id']; ?>">← Back</a></button>
-        </div>
+        <!--<div class="back-button-container">
+            <button class="back-button"><a href="existing_page.php?id=<?php echo $result['collection_id']; ?>">← Back</a></button>
+        </div>-->
         <div class="card">
             <form action="../actions/edit_product_action.php" method="post">
                 <?php if (isset($_SESSION['Create_Error'])): ?>

@@ -38,9 +38,7 @@ if (isset($_GET['id'])) {
         </a>
 
         <div class="collection-name">
-            <h3> <?php foreach ($collections as $collection) {
-                echo $collection['collection_name'];
-            } ?> </h3>
+            <h3> <?php echo $result['collection_name'] ?></h3>
         </div>
 
         <button class="profile-btn">
