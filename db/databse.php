@@ -1,14 +1,24 @@
-<?php 
-    $servername='localhost';
-    $username='root';
-    $password='';
-    $dbname='fashioncostsimulator';
+<?php
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'fashioncostsimulator';
 
-    // making the connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+try {
+    // Create a new database connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    //
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
+    // Check for connection errors
+    if (!$conn) {
+        throw new Exception("Connection failed: " . mysqli_connect_error());
+    }
+
+  
+    // If connection is successful, you can add a debug statement (optional)
+    // echo "Connected successfully";
+} catch (Exception $e) {
+    // Handle the exception and display the error message
+    error_log("Database connection error: " . $e->getMessage(), 0);
+    die("Problem");
+}
 ?>

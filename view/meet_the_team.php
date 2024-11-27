@@ -39,7 +39,7 @@
                 </div>
                 <div class="member-info">
                     <h2 class="member-name">Bernard Agbloe Jnr</h2>
-                    <p class="member-role">Back-end developer</p>
+                    <p class="member-role">Front-end Developer</p>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
                 </div>
                 <div class="member-info">
                     <h2 class="member-name">Zoie Atakora-Nsiah</h2>
-                    <p class="member-role">Front-end developer</p>
+                    <p class="member-role">Back-end developer</p>
                 </div>
             </div>
 

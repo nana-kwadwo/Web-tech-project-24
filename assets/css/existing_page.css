@@ -66,18 +66,15 @@ body {
 
 /* Products Grid */
 .products-grid {
-    padding:100px;
+    padding: 100px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:space-between 100px; 
-    gap: 100px;
+    flex-direction: column;
+    gap: 16px;
     
 }
 
 .product-card {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #111;
@@ -87,7 +84,6 @@ body {
     color: #fff;
     transition: all 0.3s ease;
     border: 1px solid transparent;
-    gap: 50px;
 }
 
 .product-card:hover {

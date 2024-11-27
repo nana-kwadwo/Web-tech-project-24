@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Prepare SQL statement to verify user credentials
-    $stmt = $conn->prepare("SELECT id, fname, lname, password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, fname, lname, password FROM fashion_users WHERE email = ?");
     if (!$stmt) {
         die("Statement preparation failed: " . $conn->error);
     }

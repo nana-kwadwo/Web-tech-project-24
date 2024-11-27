@@ -8,7 +8,7 @@ CREATE DATABASE FashionCostSimulator;
 USE FashionCostSimulator;
 
 -- Users Table
-CREATE TABLE users (
+CREATE TABLE fashion_users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fname VARCHAR(100) NOT NULL,
     lname VARCHAR(100) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE collections (
     projected_revenue DECIMAL(10, 2) DEFAULT 0,
     projected_profit DECIMAL(10, 2) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES fashion_users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Products Table
@@ -221,7 +221,7 @@ END;//
 DELIMITER ;
 
 -- Indexes for performance optimization
-CREATE INDEX idx_user_id ON users(id);
+CREATE INDEX idx_user_id ON fashion_users(id);
 CREATE INDEX idx_collection_user_id ON collections(user_id);
 CREATE INDEX idx_product_collection_id ON products(collection_id);
 CREATE UNIQUE INDEX idx_collection_summary ON collection_summary(collection_id);

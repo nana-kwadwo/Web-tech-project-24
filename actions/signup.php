@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Check if email already exists
-    $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT email FROM fashion_users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert the user into the database
-    $stmt = $conn->prepare("INSERT INTO users (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO fashion_users (fname, lname, email, password) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $fName, $lName, $email, $hashedPassword);
 
     if ($stmt->execute()) {
