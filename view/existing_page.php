@@ -10,6 +10,8 @@ if (isset($_GET['id'])) {
     $result = getCollection($_GET['id']);
 }
 
+var_dump($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@ if (isset($_GET['id'])) {
     <!-- Products Grid Section -->
     <div class="products-grid">
         <!-- Product Card 1 -->
-       <?php displayProducts($conn); ?>
+        <?php displayProducts($conn, $result['collection_id']); ?>
 
         <!-- More Product Cards can go here -->
  
