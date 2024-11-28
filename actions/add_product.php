@@ -1,4 +1,5 @@
 <?php
+// made changes here
 session_start();
 include '../db/databse.php';
 include '../functions/collection_function.php';
@@ -56,7 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, sewing_cost, number_of_units, markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdddddidd", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost, $sewing_cost, $numberOfUnits, $markup_percentage);
+    $stmt->bind_param("sidddddidd", 
+        $productName,
+        $collection_id, 
+        $fabricCost, 
+        $deliveryCost, 
+        $printingCost, 
+        $packagingCost, 
+        $sewing_cost, 
+        $numberOfUnits, 
+        $markup_percentage
+    );
 
     if ($stmt->execute()) {
         // Product created successfully

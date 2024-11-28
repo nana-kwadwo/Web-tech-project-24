@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   product_name = ?, 
                   fabric_cost = ?, 
                   printing_cost = ?, 
-                  sewing_cost=?,
+                  sewing_cost = ?,
                   packaging_cost = ?, 
                   delivery_cost = ?, 
                   number_of_units = ?, 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Bind parameters
     $stmt->bind_param(
-        "sdddddddi", 
+        "sdddddidi", 
         $productName, 
         $fabricCost, 
         $printingCost, 
