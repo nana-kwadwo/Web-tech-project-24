@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, sewing_cost, number_of_units, markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sidddddidd", 
+    $stmt->bind_param("sidddddid", 
         $productName,
         $collection_id, 
         $fabricCost, 

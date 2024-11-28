@@ -53,11 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productId
     );
 
-    // Execute the query
+    // Get collection_id from the product before updating
+    $stmt = $conn->prepare("SELECT collection_id FROM products WHERE product_id = ?");
+    $stmt->bind_param("i", $productId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $product = $result->fetch_assoc();
+    $collection_id = $product['collection_id'];
+
+    // Execute the update query
     if ($stmt->execute()) {
         updateCollectionTotalCost($collection_id);
-        // Redirect to the product details page or display a success message
-        header("Location: ../view/collection_history.php");
+        // Redirect to the collection page instead of collection_history
+        header("Location: ../view/existing_page.php?id=" . $collection_id);
         exit();
     } else {
         die("Error updating product: " . $stmt->error);
