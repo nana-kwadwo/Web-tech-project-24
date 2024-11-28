@@ -97,11 +97,17 @@ function displayProducts($conn) {
 
 function updateCollectionTotalCost($collectionId) {
     global $conn;
+    
+    // Close any existing result sets
+    while ($conn->more_results()) {
+        $conn->next_result();
+    }
+    
     $sumProductsSQL = "
         UPDATE collections 
         SET 
         total_cost = (
-            SELECT COALESCE(SUM(total_cost), 0)
+            SELECT COALESCE(SUM(fabric_cost + delivery_cost + sewing_cost + printing_cost + packaging_cost), 0)
             FROM products
             WHERE collection_id = ?
         ),
@@ -125,8 +131,16 @@ function updateCollectionTotalCost($collectionId) {
 
     // Prepare and execute the query
     $stmt = $conn->prepare($sumProductsSQL);
+    if (!$stmt) {
+        error_log("Failed to prepare statement: " . $conn->error);
+        return false;
+    }
+    
     $stmt->bind_param("iiiii", $collectionId, $collectionId, $collectionId, $collectionId, $collectionId);
-    $stmt->execute();
+    $result = $stmt->execute();
+    $stmt->close();
+    
+    return $result;
 }
 
 

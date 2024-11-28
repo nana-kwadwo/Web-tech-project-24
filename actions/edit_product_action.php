@@ -35,14 +35,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   markup_percentage = ? 
               WHERE product_id = ?";
 
-    $stmt = $conn->prepare($query);
+    // Get collection_id from the product before updating
+    $getCollectionStmt = $conn->prepare("SELECT collection_id FROM products WHERE product_id = ?");
+    $getCollectionStmt->bind_param("i", $productId);
+    $getCollectionStmt->execute();
+    $result = $getCollectionStmt->get_result();
+    $product = $result->fetch_assoc();
+    $collection_id = $product['collection_id'];
+    $getCollectionStmt->close();
 
-    if (!$stmt) {
+    // Store the update statement in a variable
+    $updateStmt = $conn->prepare($query);
+    if (!$updateStmt) {
         die("Prepare failed: " . $conn->error);
     }
 
-    // Bind parameters
-    $stmt->bind_param(
+    // Bind parameters to the update statement
+    $updateStmt->bind_param(
         "sdddddidi", 
         $productName, 
         $fabricCost, 
@@ -55,22 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productId
     );
 
-    // Get collection_id from the product before updating
-    $stmt = $conn->prepare("SELECT collection_id FROM products WHERE product_id = ?");
-    $stmt->bind_param("i", $productId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $product = $result->fetch_assoc();
-    $collection_id = $product['collection_id'];
-
     // Execute the update query
-    if ($stmt->execute()) {
+    if ($updateStmt->execute()) {
+        $updateStmt->close();
         updateCollectionTotalCost($collection_id);
         // Redirect to the collection page instead of collection_history
         header("Location: ../view/existing_page.php?id=" . $collection_id);
         exit();
     } else {
-        die("Error updating product: " . $stmt->error);
+        $updateStmt->close();
+        die("Error updating product: " . $updateStmt->error);
     }
 } else {
     // Handle cases where the script is accessed without a POST request
