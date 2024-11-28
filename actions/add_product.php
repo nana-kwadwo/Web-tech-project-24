@@ -51,13 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sewing_cost= $_POST['sewing_cost'];
 
 
-    $unitCost = ($fabricCost + $deliveryCost + $printingCost + $packagingCost+ $sewing_cost);
-    $totalCost = $fabricCost + $deliveryCost + $printingCost + $packagingCost+ $sewing_cost;
+    $totalCost = $fabricCost + $deliveryCost + $printingCost + $packagingCost + $sewing_cost;
+    $unitCost = $totalCost / $numberOfUnits;
 
 
-
-    $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, sewing_cost, total_cost, number_of_units,markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?)");
-    $stmt->bind_param("ssddddddid", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost,$sewing_cost, $totalCost, $numberOfUnits, $markup_percentage);
+    $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, sewing_cost, number_of_units, markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssdddddidd", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost, $sewing_cost, $numberOfUnits, $markup_percentage);
 
     if ($stmt->execute()) {
         // Product created successfully

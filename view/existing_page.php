@@ -80,24 +80,21 @@ if (isset($_GET['id'])) {
 
 
 function deleteProduct(productId) {
-    // Confirm before deleting
     if (confirm("Are you sure you want to delete this product?")) {
-        // Send an AJAX request to delete the product
         fetch('../actions/delete_product_action.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: 'product_id=' + productId // Send the product ID to the server
+            body: 'product_id=' + productId
         })
-        .then(response => response.json()) // Expecting a JSON response
+        .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // If deletion is successful, alert the user and reload the page
                 alert('Product deleted successfully.');
-                location.reload(); // Reload the page to update the product list
+                location.reload();
             } else {
-                alert('Failed to delete the product. Please try again.');
+                alert('Failed to delete the product: ' + (data.error || 'Unknown error'));
             }
         })
         .catch(error => {

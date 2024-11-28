@@ -96,7 +96,6 @@ function displayProducts($conn) {
 
 
 function updateCollectionTotalCost($collectionId) {
-    // Calculate the sum of product prices for the given collection
     global $conn;
     $sumProductsSQL = "
         UPDATE collections 
@@ -120,16 +119,14 @@ function updateCollectionTotalCost($collectionId) {
             SELECT COALESCE(SUM(projected_profit), 0)
             FROM products
             WHERE collection_id = ?
-            )
+        )
         WHERE collection_id = ?
     ";
 
     // Prepare and execute the query
     $stmt = $conn->prepare($sumProductsSQL);
-    // $stmt->execute([':collection_id' => $collectionId]);
-    $stmt->execute($sumProductsSQL);
-
-    echo "Total cost updated successfully for collection ID $collectionId.";
+    $stmt->bind_param("iiiii", $collectionId, $collectionId, $collectionId, $collectionId, $collectionId);
+    $stmt->execute();
 }
 
 
