@@ -3,6 +3,8 @@ session_start();
 include '../db/databse.php';
 include '../functions/collection_function.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // global $collection_id;
 // if (isset($_GET['id'])) {
 //     $collection_id = $_GET['id'];
@@ -46,16 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $packagingCost = $_POST['packaging_cost'];
     $markup_percentage = $_POST['markup_percentage'];
     $numberOfUnits= $_POST['number_of_units'];
+    $sewing_cost= $_POST['sewing_cost'];
 
 
-    $unitCost = ($fabricCost + $deliveryCost + $printingCost + $packagingCost);
+    $unitCost = ($fabricCost + $deliveryCost + $printingCost + $packagingCost+ $sewing_cost);
+    $totalCost = $fabricCost + $deliveryCost + $printingCost + $packagingCost+ $sewing_cost;
 
 
-    $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, number_of_units,markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
-    $stmt->bind_param("ssddddid", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost, $numberOfUnits, $markup_percentage);
+
+    $stmt = $conn->prepare("INSERT INTO products (product_name, collection_id, fabric_cost, delivery_cost, printing_cost, packaging_cost, sewing_cost, total_cost, number_of_units,markup_percentage) VALUES (?, ?, ?, ?, ?, ?, ?,?,?, ?)");
+    $stmt->bind_param("ssddddddid", $productName, $collection_id, $fabricCost, $deliveryCost, $printingCost, $packagingCost,$sewing_cost, $totalCost, $numberOfUnits, $markup_percentage);
 
     if ($stmt->execute()) {
         // Product created successfully
+        updateCollectionTotalCost($collection_id);
         header('Location: ../view/existing_page.php?id=' . $collection_id);
         exit;
     } else {

@@ -61,6 +61,11 @@ if (isset($_GET['id'])) {
                             <button class="delete-btn" onclick="deleteCostItem(this)">✖</button>
                         </div>
                         <div class="cost-item">
+                            <label type="text" value="Fabric" class="cost-name">Sewing </label>
+                            <input type="number" value="<?php echo htmlspecialchars($product['sewing_cost']); ?>" class="cost-value" name="sewing_cost" />
+                            <button class="delete-btn" onclick="deleteCostItem(this)">✖</button>
+                        </div>
+                        <div class="cost-item">
                             <label type="text" value="Fabric" class="cost-name">Packaging </label>
                             <input type="number" value="<?php echo htmlspecialchars($product['packaging_cost']); ?>" class="cost-value" name="packaging_cost" />
                             <button class="delete-btn" onclick="deleteCostItem(this)">✖</button>

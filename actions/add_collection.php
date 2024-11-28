@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     
-    // Check if collection name already exists for this user
+    
+// Check if collection name already exists for this user
     $stmt = $conn->prepare("SELECT collection_id FROM collections WHERE collection_name = ? AND user_id = ?");
     $stmt->bind_param("si", $collectionName, $user_id);
     $stmt->execute();

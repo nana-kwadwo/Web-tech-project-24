@@ -30,20 +30,6 @@ function getCollection($collection_id) {
     }
 }
 
-function getCollectionSummary($summary_id){
-    global $conn;
-    $sql="SELECT * from `collection_summary` where summary_id='$summary_id'";
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        // Fetch all rows into an array
-        return $result->fetch_assoc();
-    } else {
-        // Return an empty array if no collections are found
-        return [];
-    }}
-
-
 
 function displayProducts($conn) {
     // Check if 'collection_id' is provided in the URL
@@ -107,5 +93,44 @@ function displayProducts($conn) {
         echo "<p>Collection ID is not specified.</p>";
     }
 }
+
+
+function updateCollectionTotalCost($collectionId) {
+    // Calculate the sum of product prices for the given collection
+    global $conn;
+    $sumProductsSQL = "
+        UPDATE collections 
+        SET 
+        total_cost = (
+            SELECT COALESCE(SUM(total_cost), 0)
+            FROM products
+            WHERE collection_id = ?
+        ),
+        total_break_even = (
+            SELECT COALESCE(SUM(break_even_cost), 0)
+            FROM products
+            WHERE collection_id = ?
+        ),
+        projected_revenue = (
+            SELECT COALESCE(SUM(projected_revenue), 0)
+            FROM products
+            WHERE collection_id = ?
+        ),
+        projected_profit = (
+            SELECT COALESCE(SUM(projected_profit), 0)
+            FROM products
+            WHERE collection_id = ?
+            )
+        WHERE collection_id = ?
+    ";
+
+    // Prepare and execute the query
+    $stmt = $conn->prepare($sumProductsSQL);
+    // $stmt->execute([':collection_id' => $collectionId]);
+    $stmt->execute($sumProductsSQL);
+
+    echo "Total cost updated successfully for collection ID $collectionId.";
+}
+
 
 ?>

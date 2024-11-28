@@ -2,16 +2,13 @@
 include '../functions/collection_function.php';
 include '../db/databse.php';
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $collections = getCollections();
 if (isset($_GET['id'])) {
     $result = getCollection($_GET['id']);
 }
-
-if (isset($_GET['id'])) {
-    $summary_result = getCollectionSummary($_GET['id']);
-}
-
-
 
 ?>
 

@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../db/databse.php'; // Include your database connection
+include '../functions/collection_function.php';
+
 
 // Check if the product_id is provided via POST
 if (isset($_POST['product_id'])) {
@@ -11,6 +13,7 @@ if (isset($_POST['product_id'])) {
     $stmt->bind_param("i", $product_id);
 
     if ($stmt->execute()) {
+        updateCollectionTotalCost($collection_id);
         // Deletion successful, send a success response
         echo json_encode(['success' => true]);
     } else {
